@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 const Reviews = () => {
   const params = useParams();
-  console.log(params);
+  // console.log(params);
 
   return <div>Reviews</div>;
 };

@@ -1,28 +1,29 @@
 import { useState } from "react";
 
-const SearchMovieForm = ({ onSubmit }) => {
-  const [searchMovie, setSearchMovie] = useState();
+
+const SearchMovieForm = ({value, onSubmit }) => {
+  const [query, setQuery] = useState(value)
 
   const handleInputChange = (event) => {
-    setSearchMovie(event.target.value);
+    setQuery(event.target.value)
   };
 
-  const handleSubmit = (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
-    onSubmit(searchMovie);
-    if (searchMovie.trim() === "") {
-      return alert("TRY AGAIN!");
+    if(query.trim() === '') {
+      return alert('Sorry, enter something in search line.')
     }
-    setSearchMovie("");
+
+    onSubmit(query);
   };
   return (
     <div>
       <h2>Search Movie</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <input
           type="text"
           placeholder="search."
-          value={searchMovie}
+          value={query}
           onChange={handleInputChange}
           autoComplete="off"
         />
