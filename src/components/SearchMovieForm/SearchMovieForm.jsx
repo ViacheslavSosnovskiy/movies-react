@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 const SearchMovieForm = ({value, onSubmit }) => {
   const [query, setQuery] = useState(value)
 

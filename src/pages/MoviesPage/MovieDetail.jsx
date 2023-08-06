@@ -1,29 +1,38 @@
-import React from "react";
-import { Link, Outlet, useLocation, useParams} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, Navigate, useLocation, useParams} from "react-router-dom";
+import { getMovieDetails } from "../../services/api";
+import MovieCard from "../../components/MovieCard/MovieCard";
 
 const MovieDetail = () => {
+  const [movieDetails, setMovieDetails] = useState({})
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
+
   const location = useLocation()
   const {movieId} = useParams()
 
+  useEffect(() => {
+    if(movieId) getMovieDetailsById()
+
+    async function getMovieDetailsById() {
+      setIsLoading(true)
+      try {
+        const movieInformation = await getMovieDetails(movieId)
+        setMovieDetails(movieInformation)
+      } catch (error) {
+        setError(error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+  }, [movieId])
+
   return (
     <>
-      <h2>MovieDetail {movieId}</h2>
-
+    {error && <Navigate to='/404'/>}
     <Link to="/movies" state={location.state?.from ?? '/movies'}>Back</Link>
-
-      <ul>
-        <li>
-          <Link to="reviews" state={location.state?.from ?? '/movies'}>Descriptio</Link>
-        </li>
-        <li>
-          <Link to="cast" state={location.state?.from ?? '/movies'}>Cast</Link>
-        </li>
-
-      </ul>
-
-      <div>
-        <Outlet />
-      </div>
+    {isLoading && <div>Loading...</div>}
+    <MovieCard movieDetails={movieDetails} />
     </>
   );
 };

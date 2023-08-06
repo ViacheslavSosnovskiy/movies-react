@@ -10,7 +10,6 @@ const Movies = () => {
   const [error, setError] = useState(null)
   const [searchMovie, setSearchMovie] = useSearchParams()
   const movieName = searchMovie.get('movieId') ?? ''
-  // const location = useLocation()
 
   const updateQueryString = query => {
     if(query === movieName) {
@@ -20,17 +19,15 @@ const Movies = () => {
   }
 
   useEffect(() => {
-    if(movieName) getMovieByQuery();
-
-    function getMovieByQuery() {
+    if(movieName) getMovieByQuery()
+    
+    async function getMovieByQuery() {
       setIsLoading(true)
       try {
-        const responseMovies = getSearchMovie(movieName)
+        const responseMovies = await getSearchMovie(movieName)
 
-        if(responseMovies.length === 0) {
-         const error = new Error('Sorry, there are no movies matching your search query.')
-          setError(error)
-          return;
+        if(!responseMovies.length) {
+          return alert('Sorry, there are no movies matching your search query.')
         }
         setMovies(responseMovies)
       } catch(error) {
@@ -40,15 +37,9 @@ const Movies = () => {
       }
     }
   }, [movieName]);
-
-  console.log(movies)
-  console.log(movieName)
   return (
     <>
-      <h2>Movies</h2>
       {error && alert(`${error.message}`)}
-      {/* <Link to="/movies/:movieId" state={{from: location}}>MovieDetails</Link> */}
-
       {isLoading && <div>Loading...</div>}
       <SearchMovieForm value={movieName} onSubmit={updateQueryString} />
       <MoviesList movies={movies}/>
