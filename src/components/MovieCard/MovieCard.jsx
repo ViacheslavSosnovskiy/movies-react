@@ -4,7 +4,7 @@ import defaultMovieImg from '../../img/default-movie-poster.jpg'
 
 
 const MovieCard = ({movieDetails}) => {
-    const {title, poster_path, vote_average = 0, overview, genres, release_date} = movieDetails
+    const {title, poster_path, vote_average = 0, overview, genres, release_date, vote_count} = movieDetails
     const location = useLocation()
 
     const moviePoster = poster_path 
@@ -28,6 +28,7 @@ const MovieCard = ({movieDetails}) => {
             </div>
             <h2>{title}</h2>
             <p>User Score: {voteAvarage}%</p>
+            <p>People voted: {vote_count}</p>
             <h3>Overview</h3>
             <p>{overview}</p>
             <h3>Genres</h3>
