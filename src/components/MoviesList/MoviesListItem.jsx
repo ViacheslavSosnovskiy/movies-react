@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import defaultMovieImg from '../../img/default-movie-poster.jpg'
 import CircularRating from '../CircularRating/CircularRating'
+import { DescriptionWrapper, Image, Item, MovieLink, RatingWrapper, Text, Title} from './MoviesListItem.styled'
 
 const MoviesListItem = ({id, url, title, rating = 0, releaseDate }) => {
   const location = useLocation()
@@ -11,16 +12,21 @@ const MoviesListItem = ({id, url, title, rating = 0, releaseDate }) => {
   : defaultMovieImg
 
   return (
-    <>
-      <li>
-        <Link to={`/movies/${id}`} state={{from:location}}>
-          <img src={moviePoster} alt={title} width={340}/>
-          <h3>{title}</h3>
-          <p>{releaseDate.slice(0,4)}</p>
-          <CircularRating rating={rating.toFixed(1)}/>
-        </Link>
-      </li>
-    </>
+      <Item>
+        <MovieLink to={`/movies/${id}`} state={{from:location}}>
+          <div>
+            <Image src={moviePoster} alt={title} />
+            <RatingWrapper>
+              <CircularRating rating={rating.toFixed(1)}/>
+            </RatingWrapper>
+          </div>
+          
+          <DescriptionWrapper>
+            <Title>{title}</Title>
+            <Text>{releaseDate.slice(0,4)}</Text>
+          </DescriptionWrapper>
+        </MovieLink>
+      </Item>
   )
 }
 

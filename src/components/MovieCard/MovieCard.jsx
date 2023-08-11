@@ -1,10 +1,10 @@
 import PropTypes  from 'prop-types'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import defaultMovieImg from '../../img/default-movie-poster.jpg'
-
+import { Article, InfoWrapper, MovieTitle, Overview, Poster, PosterWrapper, Text, Title } from './MovieCard.styled'
 
 const MovieCard = ({movieDetails}) => {
-    const {title, poster_path, vote_average = 0, overview, genres, release_date, vote_count} = movieDetails
+    const {title, poster_path, overview, genres, release_date} = movieDetails
     const location = useLocation()
 
     const moviePoster = poster_path 
@@ -19,22 +19,27 @@ const MovieCard = ({movieDetails}) => {
         return;
     }
 
-    const voteAvarage = Math.round((vote_average * 10))
   return (
     <>
         <div>
-            <div>
-            <img src={moviePoster} alt={title} width={340}/>
-            </div>
-            <h2>{title}</h2>
-            <p>User Score: {voteAvarage}%</p>
-            <p>People voted: {vote_count}</p>
-            <h3>Overview</h3>
-            <p>{overview}</p>
-            <h3>Genres</h3>
-            <p>{getGenres(genres)}</p>
-            <h3>Release date</h3>
-            <p>{release_date}</p>
+            <Article>
+              <PosterWrapper>
+                <Poster src={moviePoster} alt={title} width={340}/>
+              </PosterWrapper>
+              <InfoWrapper>
+                <MovieTitle>{title}</MovieTitle>
+
+                <Overview>Overview</Overview>
+                  <Text>{overview}</Text>
+
+                <Title>Genres</Title>
+                  <Text>{getGenres(genres)}</Text>
+                  
+                <Title>Release date</Title>
+                  <Text>{release_date}</Text>
+
+              </InfoWrapper>
+            </Article>
         </div>
         <ul>
             <li>

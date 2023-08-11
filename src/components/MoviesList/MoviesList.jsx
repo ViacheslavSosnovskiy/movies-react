@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
 import MoviesListItem from './MoviesListItem'
+import { List, Section } from './MoviesList.styled'
 
 const MoviesList = ({movies}) => {
   return (
-    <>
-        <ul>
+    <Section>
+        <List>
             {movies.map(({id, title, poster_path, vote_average, release_date}) => (
                 <MoviesListItem 
                   key={id} 
@@ -15,8 +16,8 @@ const MoviesList = ({movies}) => {
                   releaseDate={release_date}
                 />
             ))}
-        </ul>
-    </>
+        </List>
+    </Section>
   )
 }
 

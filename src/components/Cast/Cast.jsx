@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getMovieCredits } from "../../../services/api";
-import defaultProfileImg from '../../../img/default-profile-img.png'
+import { getMovieCredits } from "../../services/api";
+import defaultProfileImg from '../../img/default-profile-img.png'
 
 const Cast = () => {
   const [movieCast, setMovieCast] = useState([])

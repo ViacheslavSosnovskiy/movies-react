@@ -1,16 +1,21 @@
 import React from "react";
+import GlobalStyle from "./globalStyles";
 import { Route, Routes } from "react-router-dom";
 
 import Layout from "./components/Layout/Layout";
 import HomePage from "./pages/HomePage/HomePage";
 import MoviesPage from "./pages/MoviesPage/MoviesPage";
 import MovieDetails from "./pages/MoviesPage/MovieDetail";
-import Reviews from "./pages/MoviesPage/Reviews/Reviews";
-import Cast from "./pages/MoviesPage/Cast/Cast";
+import Reviews from "./components/Reviews/Reviews";
+import Cast from "./components/Cast/Cast";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+
 
 const App = () => {
   return (
+    <>
+    <GlobalStyle />
+    
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
@@ -22,6 +27,7 @@ const App = () => {
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
+    </>
   );
 };
 

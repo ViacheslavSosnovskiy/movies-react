@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import { getTrandingMovies } from "../../services/api";
 import MoviesList from "../../components/MoviesList/MoviesList";
+import Hero from "../../components/Hero/Hero";
 
 const HomePage = () => {
   const [trandingMovies, setTrandingMovies] = useState([])
@@ -25,10 +26,11 @@ const HomePage = () => {
 
   return (
     <>
-    <h2>Tranding movies this week</h2>
     {isLoading && <div>Loading...</div>}
     {error && alert(`${error.message}`)}
-     <MoviesList movies={trandingMovies} />
+      <Hero />
+
+      <MoviesList movies={trandingMovies} />
     </>
   );
 };
