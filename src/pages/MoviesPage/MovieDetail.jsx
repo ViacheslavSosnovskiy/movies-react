@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate, useLocation, useParams} from "react-router-dom";
+import { Navigate, useLocation, useParams} from "react-router-dom";
+import { FaArrowCircleLeft } from "react-icons/fa";
 import { getMovieDetails } from "../../services/api";
 import MovieCard from "../../components/MovieCard/MovieCard";
+import { BackLink, WrapperText } from "./MovieDetail.styled";
 
 const MovieDetail = () => {
   const [movieDetails, setMovieDetails] = useState({})
@@ -30,7 +32,10 @@ const MovieDetail = () => {
   return (
     <>
     {error && <Navigate to='/404'/>}
-    <Link to="/movies" state={location.state?.from ?? '/movies'}>Back</Link>
+    <BackLink to="/" state={location.state?.from ?? '/'}>
+      <FaArrowCircleLeft />
+      <WrapperText>Back</WrapperText>
+    </BackLink>
     {isLoading && <div>Loading...</div>}
     <MovieCard movieDetails={movieDetails} />
     </>

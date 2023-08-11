@@ -1,7 +1,7 @@
 import PropTypes  from 'prop-types'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import defaultMovieImg from '../../img/default-movie-poster.jpg'
-import { Article, InfoWrapper, MovieTitle, Overview, Poster, PosterWrapper, Text, Title } from './MovieCard.styled'
+import { Container, Article, MovieTitle, Image, PosterWrapper, Text, Title, List, Item } from './MovieCard.styled'
 
 const MovieCard = ({movieDetails}) => {
     const {title, poster_path, overview, genres, release_date} = movieDetails
@@ -21,15 +21,16 @@ const MovieCard = ({movieDetails}) => {
 
   return (
     <>
-        <div>
+        <Container>
             <Article>
               <PosterWrapper>
-                <Poster src={moviePoster} alt={title} width={340}/>
+                <Image src={moviePoster} alt={title}/>
               </PosterWrapper>
-              <InfoWrapper>
+
+              <div>
                 <MovieTitle>{title}</MovieTitle>
 
-                <Overview>Overview</Overview>
+                <Title>Overview</Title>
                   <Text>{overview}</Text>
 
                 <Title>Genres</Title>
@@ -38,17 +39,19 @@ const MovieCard = ({movieDetails}) => {
                 <Title>Release date</Title>
                   <Text>{release_date}</Text>
 
-              </InfoWrapper>
+                <div>
+                  <List>
+                    <Item>
+                        <Link to="reviews" state={location.state?.from ?? '/'}>Reviews</Link>
+                    </Item>
+                    <Item>
+                        <Link to="cast" state={location.state?.from ?? '/'}>Cast</Link>
+                    </Item>
+                  </List>
+                </div>
+              </div>
             </Article>
-        </div>
-        <ul>
-            <li>
-                <Link to="reviews" state={location.state?.from ?? '/movies'}>Descriptio</Link>
-            </li>
-            <li>
-                <Link to="cast" state={location.state?.from ?? '/movies'}>Cast</Link>
-            </li>
-        </ul>
+        </Container>
 
       <div>
         <Outlet />
