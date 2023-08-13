@@ -6,6 +6,7 @@ export const Container = styled.div`
 export const Article = styled.article`
     display: flex;
     padding: 20px 20px;
+    border-radius: 4px;
     align-items: center;
     background-color: #212121;
 `
@@ -29,6 +30,7 @@ export const Title = styled.h2`
 export const Text = styled.p`
     max-width: 500px;
     margin-bottom: 16px;
+    color: gray;
 `
 export const List = styled.ul`
     display: flex;

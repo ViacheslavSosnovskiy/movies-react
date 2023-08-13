@@ -38,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
 
     img {
         display: block;
-        max-width: 100%;
+        width: 100%;
         height: auto;
       }
 `;
