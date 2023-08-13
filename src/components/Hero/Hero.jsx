@@ -13,6 +13,12 @@ import { HeroContainer, HeroText, HeroTitle, HeroWrapper } from './Hero.styled'
 //   console.log(mainImage)
 
 const Hero = () => {
+
+  // function getRandomBgImage(){
+  //   const random= Math.floor(Math.random() * 6) + 0;
+  //   const images = ["url('http://placehold.it/300&text=banner1')"]
+   
+     
   return (
     (
         <section>
