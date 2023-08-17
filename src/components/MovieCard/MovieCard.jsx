@@ -1,11 +1,36 @@
 import PropTypes  from 'prop-types'
-import { Link, Outlet, useLocation } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom'
 import defaultMovieImg from '../../img/default-movie-poster.jpg'
-import { Container, Article, MovieTitle, Image, PosterWrapper, Text, Title, List, Item } from './MovieCard.styled'
+import { Container, Article, MovieTitle, Image, PosterWrapper, Text, Title, List, Item, ArticleWrapper } from './MovieCard.styled'
+import Modal from '../Modal/Modal'
+import YouTubePlayer from '../YouTubePlayer/YouTubePlayer'
+import { FaYoutube } from 'react-icons/fa'
+import WatchButtonTrailer from '../WatchBattonTrailer/WatchButtonTrailer'
+import { getMovieTrailer } from '../../services/api'
+
+
 
 const MovieCard = ({movieDetails}) => {
-    const {title, poster_path, overview, genres, release_date} = movieDetails
+    const [trailerKey, setTrailerKey] = useState(null)
+    const [showModal, setShowModal] = useState(false)
+
+    const {title, poster_path, overview, genres, release_date, backdrop_path} = movieDetails
     const location = useLocation()
+    const {movieId} = useParams()
+
+    const toggleModal = async () => {
+      try {
+        const trailerData = await getMovieTrailer(movieId)
+        if(trailerData.results?.length > 0) {
+          const trailerKey = trailerData.results[0].key
+          setTrailerKey(trailerKey)
+          setShowModal(!showModal)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
     const moviePoster = poster_path 
         ? `https://image.tmdb.org/t/p/w500/${poster_path}`
@@ -20,8 +45,15 @@ const MovieCard = ({movieDetails}) => {
     }
 
   return (
-    <>
+    <>  
+      {showModal && 
+        <Modal onToggle={toggleModal}>
+          <YouTubePlayer trailerKey={trailerKey}/>
+        </Modal>
+      }
+
         <Container>
+          <ArticleWrapper backdrop={backdrop_path}>
             <Article>
               <PosterWrapper>
                 <Image src={moviePoster} alt={title}/>
@@ -29,6 +61,10 @@ const MovieCard = ({movieDetails}) => {
 
               <div>
                 <MovieTitle>{title}</MovieTitle>
+
+                <WatchButtonTrailer onClick={toggleModal} >
+                  Watch trailer <FaYoutube />
+                </WatchButtonTrailer>
 
                 <Title>Overview</Title>
                   <Text>{overview}</Text>
@@ -51,6 +87,7 @@ const MovieCard = ({movieDetails}) => {
                 </div>
               </div>
             </Article>
+          </ArticleWrapper>
         </Container>
 
       <div>

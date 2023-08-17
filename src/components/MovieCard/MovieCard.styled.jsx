@@ -3,12 +3,22 @@ import styled from 'styled-components'
 export const Container = styled.div`
     padding: 50px 50px;
 `
+export const ArticleWrapper = styled.div`
+    background-color: #212121;
+     background-image: ${props =>
+      props.backdrop
+        ? `url('https://image.tmdb.org/t/p/w500/${props.backdrop}')`
+        : `url("")`};
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+`
+
 export const Article = styled.article`
     display: flex;
     padding: 20px 20px;
     border-radius: 4px;
     align-items: center;
-    background-color: #212121;
 `
 export const PosterWrapper = styled.div`
     width: 280px;
