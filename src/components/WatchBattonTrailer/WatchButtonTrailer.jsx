@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
 import { Button } from './WatchButtonTrailer.styled';
 
-const WatchButtonTrailer = ({children, onClick, ...allProps}) => {
+const WatchButtonTrailer = ({children, onClick}) => {
   return (
     <Button
         type='button'
         onClick={onClick}
-        {...allProps}
     >
         {children}
     </Button>
@@ -21,7 +20,6 @@ WatchButtonTrailer.defaultProps = {
 WatchButtonTrailer.propTypes = {
     onClick: PropTypes.func,
     children: PropTypes.node,
-    'aria-label': PropTypes.string,
   };
 
 export default WatchButtonTrailer

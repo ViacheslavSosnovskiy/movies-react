@@ -6,6 +6,13 @@ export const Item = styled.li`
     flex-basis: calc(100% / 2 - 30px);
     margin-left: 30px;
     margin-top: 30px;
+    overflow: hidden;
+    transition: transform 250ms linear;
+
+    &:hover, 
+    &:focus {
+        transform: scale(1.1)
+    }
 
         @media screen and (min-width: 768px) {
             flex-basis: calc(100% / 3 - 30px);

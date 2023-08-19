@@ -48,6 +48,9 @@ export const getMovieTrailer = async (movieId) => {
   const url = `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`
 
   const response = await fetch(url);
-  const results = await response.json();
+  const {results} = await response.json();
   return response.ok ? results : Promise.reject(new Error('Not found'))
 }
+
+
+// (response.results.slice(1, 4)); -------   I need to add this feature in Cast
