@@ -1,28 +1,29 @@
 import { HeroContainer, HeroText, HeroTitle, HeroWrapper } from './Hero.styled'
 
-// const images = [
-//   { url: '../../img/space-1.jpeg' },
-//   { url: '../../img/space-2.jpeg'},
-//   { url: '../../img/space-3.jpeg' },
-//   { url: '../../img/space-4.jpeg' },
-//   { url: '../../img/space-5.jpeg' },
-// ];
+const Hero = ({movies}) => {
+
+  console.log('movies -->',movies)
+
+  let randomMovie = null
+  if(movies.length > 0 ) {
+    const randomIndex = Math.floor(Math.random() * movies.length)
+    randomMovie = movies[randomIndex]
+  }
+  console.log('randomMovie -->', randomMovie)
 
 
-//   const mainImage = images.map(({url}) => (url))
-//   console.log(mainImage)
+  const imgUrl = "https://image.tmdb.org/t/p/original"
 
-const Hero = () => {
+  const backgroundImage = `${imgUrl}${randomMovie.backdrop_path}` 
+    ? `${imgUrl}${randomMovie.backdrop_path}`
+    : `${imgUrl}${randomMovie.poster_path}`
 
-  // function getRandomBgImage(){
-  //   const random= Math.floor(Math.random() * 6) + 0;
-  //   const images = ["url('http://placehold.it/300&text=banner1')"]
-   
-     
+  console.log("backgroundImage -->", backgroundImage)
+
   return (
     (
         <section>
-            <HeroWrapper>
+            <HeroWrapper backgroundImage={backgroundImage}>
               <HeroContainer>
                 <HeroTitle>
                   Welcome

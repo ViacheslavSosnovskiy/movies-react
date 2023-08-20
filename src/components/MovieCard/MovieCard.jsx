@@ -63,7 +63,7 @@ const MovieCard = ({movieDetails}) => {
                 <MovieTitle>{title}</MovieTitle>
 
                 <WatchButtonTrailer onClick={toggleModal} >
-                  Watch trailer <FaYoutube />
+                  Watch trailer &nbsp; <FaYoutube size="2em" />
                 </WatchButtonTrailer>
 
                 <Title>Overview</Title>

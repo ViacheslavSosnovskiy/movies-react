@@ -1,24 +1,22 @@
 import styled from 'styled-components'
 
-export const Button = styled.button`
-    // position: absolute;
-    // top: 5%;
-    // left: 1%;
-    // display: flex;
-    // align-items: center;
-    // background-color: transparent;
+export const Button = styled.a`
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: transparent;
     background-color: red;
     color: white;
-    border: none;
-    opacity: 0.4;
-    padding: 12px 12px;
+    cursor: pointer;
+    opacity: 0.6;
+    border-radius: 4px;
+    padding: 10px 10px;
     margin-bottom: 10px;
-    // margin-right: 5px;
-    // margin-bottom: 5px;
-    transition: linear 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 250ms linear;
 
     &:hover {
-        transform: scale(1.15);
+        transform: scale(1.1);
         opacity: 1;
     }
 `

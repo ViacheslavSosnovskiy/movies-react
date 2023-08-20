@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import image from '../../img/space.jpg'
+// import image from '../../img/space.jpg'
 // import { Container } from '../../globalStyles';
 
 export const HeroContainer = styled.div`
@@ -18,10 +18,10 @@ export const HeroWrapper = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    // opacity: 75;
+    opacity: 0.6;
 
     background-image: linear-gradient(180deg, rgba(4, 21, 45, 0) 0%, #04152d 100%),
-        url(${image});
+        url(${props => props.backgroundImage});
 `;
 
 export const HeroTitle = styled.h1`

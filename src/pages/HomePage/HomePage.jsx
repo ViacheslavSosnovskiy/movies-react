@@ -28,7 +28,11 @@ const HomePage = () => {
     <>
     {isLoading && <div>Loading...</div>}
     {error && alert(`${error.message}`)}
-      <Hero />
+    {/* // {trandingMovies[Math.floor(Math.random() * 20)] => 
+    //   <Hero movie={movie}/>
+    // )}
+     */}
+      <Hero movies={trandingMovies}/> 
 
       <MoviesList movies={trandingMovies} />
     </>
