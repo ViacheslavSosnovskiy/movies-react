@@ -5,10 +5,9 @@ export const Container = styled.div`
 `
 export const ArticleWrapper = styled.div`
     background-color: #212121;
-     background-image: ${props =>
-      props.backdrop
-        ? `url('https://image.tmdb.org/t/p/w500/${props.backdrop}')`
-        : `url("")`};
+    border-radius: 4px;
+    background-image: linear-gradient(180deg, rgba(4, 21, 45, 0.5) 0%, #04152d 100%), 
+        url(${props => props.backdrop});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -29,7 +28,7 @@ export const Image = styled.img`
 `
 export const MovieTitle = styled.h1`
     font-size: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     text-transform uppercase;
     font-weight: bold;
 `

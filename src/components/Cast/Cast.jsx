@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import { RotatingLines } from "react-loader-spinner";
 import { getMovieCredits } from "../../services/api";
 import defaultProfileImg from '../../img/default-profile-img.jpg'
 import { CastContainer, CastList, CastItem, CastImage, CastTitle, CastText } from "./Cast.styled";
+
 
 const Cast = () => {
   const [movieCast, setMovieCast] = useState([])
@@ -28,8 +31,7 @@ const Cast = () => {
 
   return (
     <CastContainer>
-      {error && alert(`${error.message}`)}
-      {isLoading && <div>Loading...</div>}
+      {error && toast.error('Cast not found')}
       <CastList>
         {movieCast.map(({id,profile_path, name, character}) => (
           <CastItem key={id}>
@@ -53,6 +55,7 @@ const Cast = () => {
           </CastItem>
         ))}
       </CastList>
+      {isLoading && <RotatingLines strokeColor="white" />}
     </CastContainer>
   )
 };

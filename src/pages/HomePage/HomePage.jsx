@@ -1,4 +1,6 @@
 import {useEffect, useState} from "react";
+import { toast } from "react-hot-toast";
+import { RotatingLines } from "react-loader-spinner";
 import { getTrandingMovies } from "../../services/api";
 import MoviesList from "../../components/MoviesList/MoviesList";
 import Hero from "../../components/Hero/Hero";
@@ -26,14 +28,9 @@ const HomePage = () => {
 
   return (
     <>
-    {isLoading && <div>Loading...</div>}
-    {error && alert(`${error.message}`)}
-    {/* // {trandingMovies[Math.floor(Math.random() * 20)] => 
-    //   <Hero movie={movie}/>
-    // )}
-     */}
+      {isLoading && <RotatingLines strokeColor="white" />}
+      {error && toast.error('Not found any movies')}
       <Hero movies={trandingMovies}/> 
-
       <MoviesList movies={trandingMovies} />
     </>
   );

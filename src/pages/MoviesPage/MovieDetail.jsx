@@ -4,6 +4,7 @@ import { FaArrowCircleLeft } from "react-icons/fa";
 import { getMovieDetails } from "../../services/api";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import { BackLink, WrapperText } from "./MovieDetail.styled";
+import { RotatingLines } from "react-loader-spinner";
 
 const MovieDetail = () => {
   const [movieDetails, setMovieDetails] = useState({})
@@ -36,7 +37,7 @@ const MovieDetail = () => {
       <FaArrowCircleLeft />
       <WrapperText>Back</WrapperText>
     </BackLink>
-    {isLoading && <div>Loading...</div>}
+    {isLoading && <RotatingLines strokeColor="white" />}
     <MovieCard movieDetails={movieDetails} />
     </>
   );

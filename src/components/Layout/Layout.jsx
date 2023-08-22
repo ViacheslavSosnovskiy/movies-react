@@ -1,21 +1,16 @@
-import React from "react";
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../Header/Header";
-
-// const StyledLink = styled(NavLink)`
-// color: #212121;
-
-// &.active {
-//   color: orangered;
-// }
-// `;
+import {RotatingLines} from 'react-loader-spinner'
 
 const Layout = () => {
   return (
     <>
       <Header />
       <main>
-        <Outlet />
+        <Suspense fallback={<RotatingLines strokeColor="white" />}>
+          <Outlet />
+        </Suspense>
       </main>
       <footer></footer>
     </>

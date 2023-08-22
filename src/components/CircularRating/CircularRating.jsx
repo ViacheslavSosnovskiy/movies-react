@@ -5,7 +5,7 @@ import { WrapperCircularRating } from './CircularRating.styled';
 
 const CircularRating = ({rating}) => {
 
-  const ratingColor = rating < 5 ? 'red' : rating < 7 ? 'orange' : 'green'
+  const ratingColor = rating < 5 ? '#b3240b' : rating < 7 ? '#adad1d' : '#1a870e'
 
   return (
     <WrapperCircularRating>

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieReviews } from "../../services/api";
 import { ReviewsContainer, ReviewsItem, ReviewsText, ReviewsTitle } from "./Reviews.styled";
+import { RotatingLines } from "react-loader-spinner";
+import { toast } from "react-hot-toast";
 
 const Reviews = () => {
   const [movieReviews, setMovieReviews] = useState([])
@@ -27,8 +29,8 @@ const Reviews = () => {
 
   return (
     <ReviewsContainer>
-      {error && <h2>Sorry, we do not have any reviews for this movie.</h2>}
-      {isLoading && <div>Loading...</div>}
+      {error && toast.error('Sorry, we do not have any reviews for this movie')}
+      {isLoading && <RotatingLines strokeColor="white" /> }
       <ul>
         {movieReviews.map(({id, author, content, created_at}) => (
           <ReviewsItem key={id}>

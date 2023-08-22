@@ -3,8 +3,8 @@ import { createGlobalStyle } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
     body {
         box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+        margin: 0px;
+        padding: 0px;
         font-family: 'DynaPuff', cursive;
         font-weight: 400;
         font-size: 14px;
@@ -62,11 +62,6 @@ const GlobalStyle = createGlobalStyle`
 //         //   padding: 0 30px;
 //         }
 //       }
-// `
-// export const MainHeading = styled.h1`
-//     leter-spacing: 4px;
-// `
-// export const Heading = styled.h2`
 // `
 
 export default GlobalStyle

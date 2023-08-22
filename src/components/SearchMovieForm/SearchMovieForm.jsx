@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { FaSistrix } from 'react-icons/fa'
+import { Button, Input, Section } from "./SearchMovieForm.styled";
+import { toast } from "react-hot-toast";
 
 const SearchMovieForm = ({value, onSubmit }) => {
   const [query, setQuery] = useState(value)
@@ -10,25 +13,26 @@ const SearchMovieForm = ({value, onSubmit }) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     if(query.trim() === '') {
-      return alert('Sorry, enter something in search line.')
+      return toast.error('Sorry, enter something in search line.')
     }
-
     onSubmit(query);
   };
   return (
-    <div>
-      <h2>Search Movie</h2>
+    <Section>
+      <h2>Search your favorite Movie</h2>
       <form onSubmit={handleFormSubmit}>
-        <input
+        <Input
           type="text"
           placeholder="search."
           value={query}
           onChange={handleInputChange}
           autoComplete="off"
         />
-        <button type="submit">Search</button>
+        <Button type="submit">
+          <FaSistrix size="2em" />
+        </Button>
       </form>
-    </div>
+    </Section>
   );
 };
 
