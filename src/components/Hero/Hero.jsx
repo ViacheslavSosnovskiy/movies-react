@@ -27,6 +27,7 @@ const Hero = ({movies}) => {
               </HeroContainer>
             </HeroWrapper>
         </section>
+
     )
   )
 }

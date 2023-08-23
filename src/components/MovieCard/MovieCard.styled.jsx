@@ -47,8 +47,8 @@ export const MovieTitle = styled.h1`
     text-transform uppercase;
     font-weight: bold;
 
-    @media screen and (max-width: 350px) {
-        font-size: 26px;
+    @media screen and (max-width: 420px) {
+        font-size: 28px;
     }
 
     @media screen and (min-width: 768px) {
