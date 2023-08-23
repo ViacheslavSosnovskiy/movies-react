@@ -19,4 +19,8 @@ export const Button = styled.a`
         transform: scale(1.1);
         opacity: 1;
     }
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 20px;
+    }
 `
