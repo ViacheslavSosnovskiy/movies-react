@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 export const BackLink = styled(Link)`
     display: inline-block;
-    // align-items: center;
     border: none;
     border-radius: 4px;
     padding: 10px 10px;

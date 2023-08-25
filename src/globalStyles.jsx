@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { styled, createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
 
     a {
         text-decoration: none;
-        color: black;
+        color: #04152d;
     }
 
     img {
@@ -43,25 +43,23 @@ const GlobalStyle = createGlobalStyle`
       }
 `;
 
-// export const Container = styled.div`
-//     // width: 100%;
-
-//     margin: 0 auto;
-//     padding: 0 15px;
+export const Container = styled.div`
+    margin: 0 auto;
+    padding: 0 15px;
       
-//         @media screen and (min-width: 480px) {
-//           width: 480px;
-//         }
+        @media screen and (min-width: 480px) {
+          max-width: 480px;
+        }
       
-//         @media screen and (min-width: 768px) {
-//           width: 768px;
-//         }
+        @media screen and (min-width: 768px) {
+          max-width: 768px;
+        }
       
-//         @media screen and (min-width: 1200px) {
-//           width: 1200px;
-//         //   padding: 0 30px;
-//         }
-//       }
-// `
+        @media screen and (min-width: 1200px) {
+          max-width: 1200px;
+          padding: 0 30px;
+        }
+      }
+`
 
 export default GlobalStyle

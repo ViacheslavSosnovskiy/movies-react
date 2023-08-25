@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieReviews } from "../../services/api";
-import { ReviewsContainer, ReviewsItem, ReviewsText, ReviewsTitle } from "./Reviews.styled";
+import { Container } from '../../globalStyles'
+import { ReviewsItem, ReviewsText, ReviewsTitle } from "./Reviews.styled";
 import { RotatingLines } from "react-loader-spinner";
 import { toast } from "react-hot-toast";
 
@@ -28,7 +29,7 @@ const Reviews = () => {
   }, [movieId])
 
   return (
-    <ReviewsContainer>
+    <Container>
       {error && toast.error('Sorry, we do not have any reviews for this movie')}
       {isLoading && <RotatingLines strokeColor="white" /> }
       <ul>
@@ -42,7 +43,7 @@ const Reviews = () => {
           </ReviewsItem>
         ))}
       </ul>
-    </ReviewsContainer>
+    </Container>
   );
 };
 

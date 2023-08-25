@@ -29,8 +29,8 @@ export const HeroWrapper = styled.div`
     background-image: linear-gradient(180deg, rgba(4, 21, 45, 0) 0%, #04152d 100%),
         url(${props => props.backgroundImage});
 
-    @media screen and (max-width: 480px) {
-        max-width: 480px;
+    @media screen and (max-width: 479px) {
+        max-width: 479px;
     }
 
     @media screen and (max-width: 767px) {

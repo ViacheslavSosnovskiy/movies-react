@@ -3,6 +3,7 @@ import { Navigate, useLocation, useParams} from "react-router-dom";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { getMovieDetails } from "../../services/api";
 import MovieCard from "../../components/MovieCard/MovieCard";
+import { Container } from '../../globalStyles'
 import { BackLink, WrapperText } from "./MovieDetail.styled";
 import { RotatingLines } from "react-loader-spinner";
 
@@ -31,15 +32,15 @@ const MovieDetail = () => {
   }, [movieId])
 
   return (
-    <>
-    {error && <Navigate to='/404'/>}
-    <BackLink to="/" state={location.state?.from ?? '/'}>
-      <FaArrowCircleLeft />
-      <WrapperText>Back</WrapperText>
-    </BackLink>
-    {isLoading && <RotatingLines strokeColor="white" />}
-    <MovieCard movieDetails={movieDetails} />
-    </>
+    <Container>
+      {error && <Navigate to='/404'/>}
+      <BackLink to="/" state={location.state?.from ?? '/'}>
+        <FaArrowCircleLeft />
+        <WrapperText>Back</WrapperText>
+      </BackLink>
+      {isLoading && <RotatingLines strokeColor="white" />}
+      <MovieCard movieDetails={movieDetails} />
+    </Container>
   );
 };
 

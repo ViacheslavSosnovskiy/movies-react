@@ -1,13 +1,11 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-    padding: 50px 50px;
-`
 export const ArticleWrapper = styled.div`
     border-radius: 4px;
 
     @media screen and (max-width: 767px) {
         text-align: center;
+        margin-bottom: 20px;
     }
     
     @media screen and (min-width: 768px) {
@@ -16,6 +14,7 @@ export const ArticleWrapper = styled.div`
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        margin-bottom: 40px;
     }
 `
 

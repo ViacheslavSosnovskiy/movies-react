@@ -12,10 +12,11 @@ export const NavBarLink = styled(NavLink)`
     line-height: 1.14;
     padding: 12px 12px;
     align-items: center;
+    transition: 250ms linear;
 
     &:hover,
     &:focus {
-        color: yellow;
+        color: gray;
     }
 
     &:not(:last-child) {

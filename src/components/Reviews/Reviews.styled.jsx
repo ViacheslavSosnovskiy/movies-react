@@ -1,8 +1,5 @@
 import styled from 'styled-components'
 
-export const ReviewsContainer = styled.div`
-    padding: 20px 20px;
-`
 export const ReviewsItem = styled.li`
     margin-bottom: 30px;
 `

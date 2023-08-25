@@ -7,9 +7,10 @@ export const LogoLink = styled(Link)`
     font-size: 16px;
     line-height: 1.14;
     padding: 12px 12px;
+    transition: 250ms linear;
 
     &:hover,
     &:focus {
-        color: yellow;
+        color: gray;
     }
 `

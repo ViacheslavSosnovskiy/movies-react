@@ -5,6 +5,7 @@ import { RotatingLines } from "react-loader-spinner";
 import SearchMovieForm from "../../components/SearchMovieForm/SearchMovieForm";
 import { getSearchMovie } from "../../services/api";
 import MoviesList from "../../components/MoviesList/MoviesList";
+import { Container } from "../../globalStyles";
 
 const Movies = () => {
   const [movies, setMovies] = useState([])
@@ -37,12 +38,12 @@ const Movies = () => {
     }
   }, [movieName]);
   return (
-    <>
+    <Container>
       {error && toast.error('Sorry, there are no movies matching your search query.')}
-      {isLoading && <RotatingLines strokeColor="white" />}
       <SearchMovieForm value={movieName} onSubmit={updateQueryString} />
       <MoviesList movies={movies}/>
-    </>
+      {isLoading && <RotatingLines strokeColor="white" />}
+    </Container>
   );
 };
 

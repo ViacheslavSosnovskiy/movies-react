@@ -4,7 +4,8 @@ import { toast } from "react-hot-toast";
 import { RotatingLines } from "react-loader-spinner";
 import { getMovieCredits } from "../../services/api";
 import defaultProfileImg from '../../img/default-profile-img.jpg'
-import { CastContainer, CastList, CastItem, CastImage, CastTitle, CastText } from "./Cast.styled";
+import { Container } from '../../globalStyles'
+import { CastList, CastItem, CastImage, CastTitle, CastText, CastWrapperImage } from "./Cast.styled";
 
 
 const Cast = () => {
@@ -30,12 +31,12 @@ const Cast = () => {
   }, [movieId])
 
   return (
-    <CastContainer>
+    <Container>
       {error && toast.error('Cast not found')}
       <CastList>
         {movieCast.map(({id,profile_path, name, character}) => (
           <CastItem key={id}>
-            <div>
+            <CastWrapperImage>
               <CastImage 
                 src={
                   profile_path 
@@ -44,7 +45,7 @@ const Cast = () => {
                 } 
                 alt={name} 
               />
-            </div>
+            </CastWrapperImage>
 
 
             <div>
@@ -56,7 +57,7 @@ const Cast = () => {
         ))}
       </CastList>
       {isLoading && <RotatingLines strokeColor="white" />}
-    </CastContainer>
+    </Container>
   )
 };
 
