@@ -1,18 +1,21 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import Header from "../Header/Header";
 import {RotatingLines} from 'react-loader-spinner'
+import { Main } from "./Layout.styled";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+
 
 const Layout = () => {
   return (
     <>
       <Header />
-      <main>
-        <Suspense fallback={<RotatingLines strokeColor="white" />}>
-          <Outlet />
-        </Suspense>
-      </main>
-      <footer></footer>
+        <Main>
+          <Suspense fallback={<RotatingLines strokeColor="white" />}>
+            <Outlet />
+          </Suspense>
+        </Main>
+      <Footer />
     </>
   );
 };

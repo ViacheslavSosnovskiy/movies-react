@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 export const Section = styled.section`
-    padding: 80px 80px;
+    padding: 60px 60px;
 
-    @media screen and (min-width: 768px) {
-        padding: 100px 100px;
+    @media screen and (mmi-width: 768px) {
+        padding: 80px 80px;
+
     }
 `
 

@@ -1,8 +1,11 @@
-import { LogoLink } from './Logo.styled'
+import { LogoLink, LogoWrapper } from './Logo.styled'
 
 const Logo = () => {
   return (
-    <LogoLink to="/">Movies</LogoLink>
+    <LogoLink to="/">
+      <LogoWrapper>Love</LogoWrapper>
+      Movies
+    </LogoLink>
   )
 }
 
