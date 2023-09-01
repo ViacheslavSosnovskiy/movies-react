@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
 import { toast } from "react-hot-toast";
-import { RotatingLines } from "react-loader-spinner";
 import { getTrandingMovies } from "../../services/api";
 import MoviesList from "../../components/MoviesList/MoviesList";
 import Hero from "../../components/Hero/Hero";
+import Spinner from "../../components/Spinner/Spinner";
 
 const HomePage = () => {
   const [trandingMovies, setTrandingMovies] = useState([])
@@ -28,8 +28,8 @@ const HomePage = () => {
 
   return (
     <>
-      {isLoading && <RotatingLines strokeColor="white" />}
       {error && toast.error('Not found any movies')}
+      <Spinner isLoading={isLoading}/>
       <Hero movies={trandingMovies}/> 
       <MoviesList movies={trandingMovies} />
     </>

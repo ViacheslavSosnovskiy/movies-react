@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { RotatingLines } from "react-loader-spinner";
 import { getMovieCredits } from "../../services/api";
 import defaultProfileImg from '../../img/default-profile-img.jpg'
 import { Container } from '../../globalStyles'
 import { CastList, CastItem, CastImage, CastTitle, CastText, CastWrapperImage } from "./Cast.styled";
+import Spinner from "../Spinner/Spinner";
 
 
 const Cast = () => {
@@ -56,7 +56,7 @@ const Cast = () => {
           </CastItem>
         ))}
       </CastList>
-      {isLoading && <RotatingLines strokeColor="white" />}
+      <Spinner isLoading={isLoading}/>  
     </Container>
   )
 };

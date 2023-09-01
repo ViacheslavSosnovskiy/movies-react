@@ -1,7 +1,6 @@
 import PropTypes  from 'prop-types'
 import { Suspense, useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
-import { RotatingLines } from 'react-loader-spinner'
 import { FaYoutube } from 'react-icons/fa'
 import defaultMovieImg from '../../img/default-movie-poster.jpg'
 import { Container } from '../../globalStyles'
@@ -10,16 +9,18 @@ import Modal from '../Modal/Modal'
 import YouTubePlayer from '../YouTubePlayer/YouTubePlayer'
 import WatchButtonTrailer from '../WatchBattonTrailer/WatchButtonTrailer'
 import { getMovieTrailer } from '../../services/api'
+import Spinner from '../Spinner/Spinner'
 
 
 
 
 const MovieCard = ({movieDetails}) => {
   const [trailers, setTrailers] = useState(null)
-    const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-    const {id,title, poster_path, overview, genres, release_date, backdrop_path} = movieDetails
-    const location = useLocation()
+  const {id,title, poster_path, overview, genres, release_date, backdrop_path} = movieDetails
+  const location = useLocation()
    
     const toggleModal = async () => {
       try {
@@ -95,7 +96,7 @@ const MovieCard = ({movieDetails}) => {
         </Container>
 
       <div>
-        <Suspense fallback={<RotatingLines strokeColor="white" />}>
+        <Suspense fallback={<Spinner isLoading={isLoading}/>}>
           <Outlet />
         </Suspense>
       </div>

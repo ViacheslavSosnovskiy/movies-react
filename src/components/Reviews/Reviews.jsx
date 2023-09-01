@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { getMovieReviews } from "../../services/api";
 import { Container } from '../../globalStyles'
 import { ReviewsItem, ReviewsText, ReviewsTitle } from "./Reviews.styled";
-import { RotatingLines } from "react-loader-spinner";
 import { toast } from "react-hot-toast";
+import Spinner from "../Spinner/Spinner";
 
 const Reviews = () => {
   const [movieReviews, setMovieReviews] = useState([])
@@ -31,7 +31,7 @@ const Reviews = () => {
   return (
     <Container>
       {error && toast.error('Sorry, we do not have any reviews for this movie')}
-      {isLoading && <RotatingLines strokeColor="white" /> }
+      <Spinner isLoading={isLoading}/>
       <ul>
         {movieReviews.map(({id, author, content, created_at}) => (
           <ReviewsItem key={id}>

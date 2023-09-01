@@ -1,11 +1,11 @@
 import { useState, useEffect} from "react";
 import { useSearchParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { RotatingLines } from "react-loader-spinner";
 import SearchMovieForm from "../../components/SearchMovieForm/SearchMovieForm";
 import { getSearchMovie } from "../../services/api";
 import MoviesList from "../../components/MoviesList/MoviesList";
 import { Container } from "../../globalStyles";
+import Spinner from "../../components/Spinner/Spinner";
 
 const Movies = () => {
   const [movies, setMovies] = useState([])
@@ -42,7 +42,7 @@ const Movies = () => {
       {error && toast.error('Sorry, there are no movies matching your search query.')}
       <SearchMovieForm value={movieName} onSubmit={updateQueryString} />
       <MoviesList movies={movies}/>
-      {isLoading && <RotatingLines strokeColor="white" />}
+      <Spinner isLoading={isLoading}/>
     </Container>
   );
 };

@@ -5,7 +5,7 @@ import { getMovieDetails } from "../../services/api";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import { Container } from '../../globalStyles'
 import { BackLink } from "./MovieDetail.styled";
-import { RotatingLines } from "react-loader-spinner";
+import Spinner from "../../components/Spinner/Spinner";
 
 const MovieDetail = () => {
   const [movieDetails, setMovieDetails] = useState({})
@@ -37,7 +37,7 @@ const MovieDetail = () => {
       <BackLink to="/" state={location.state?.from ?? '/'}>
         <FaArrowCircleLeft /> &nbsp; Back
       </BackLink>
-      {isLoading && <RotatingLines strokeColor="white" />}
+      <Spinner isLoading={isLoading}/>
       <MovieCard movieDetails={movieDetails} />
     </Container>
   );
